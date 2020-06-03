@@ -28,8 +28,9 @@ def on_message(client, userdata, message):
     loop_flag = 0
     topic_index =str(message.topic).strip("ContainerID/ImageX")
     print(f'topic_index is {topic_index}')
-    data[str(message.topic).strip("ContainerID/ImageX")] = message.payload
-    client.unsubscribe()
+    if message.topic != "ContainerID/ImageXAvail" :
+      data[str(message.topic).strip("ContainerID/ImageX")] = message.payload
+      client.unsubscribe()
 
 
 def on_connect(client, userdata, flags, rc):
